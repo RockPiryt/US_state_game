@@ -47,10 +47,15 @@ while len(guessed_states_list) < 50:
     if player_answer == 'Exit':#all player answer are title!!!
         #create new list with missed states
         #all_state_list - guessed_states_list = missed_states_list
-        missed_states_list = []
-        for state in all_state_list:
-            if state not in guessed_states_list:
-                missed_states_list.append(state)
+
+        # missed_states_list = []
+        # for state in all_state_list:
+        #     if state not in guessed_states_list:
+        #         missed_states_list.append(state)
+
+        #list comprehension____________________________________________
+        missed_states_list = [state for state in all_state_list if state not in guessed_states_list]
+
         save_missed = pandas.DataFrame(missed_states_list)
         save_missed.to_csv('missed_states.csv')
         break
